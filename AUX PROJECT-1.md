@@ -1,4 +1,3 @@
-
 #! /bin/bash
 #CREATE NEW USER FROM SHELL SCRIPT
 
