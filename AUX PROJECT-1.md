@@ -49,23 +49,23 @@ fi
 
 
 
-# if [ -e $FILE ]
-# then
-#   while read -r CURRENT_LINE
-#   do 
-#     if [ $LINE -eq 1 ]
-#     then
-#       LINE=$((LINE+1))
-#       continue
-#     fi
-#     IFS=',' read -r -a array <<< "$CURRENT_LINE"
-#     USERNAME=${array[0]}
-#     PASSWORD=${array[1]}
-#     echo "Creating user $USERNAME"
-#     useradd -m -p $PASSWORD $USERNAME
-#     echo "$USERNAME:$PASSWORD" | chpasswd
-#     LINE=$((LINE+1))
-#   done < $FILE
-# else
-#   echo "File does not exist"
-# fi
+if [ -e $FILE ]
+ then
+   while read -r CURRENT_LINE
+   do 
+     if [ $LINE -eq 1 ]
+     then
+       LINE=$((LINE+1))
+       continue
+     fi
+     IFS=',' read -r -a array <<< "$CURRENT_LINE"
+     USERNAME=${array[0]}
+     PASSWORD=${array[1]}
+     echo "Creating user $USERNAME"
+     useradd -m -p $PASSWORD $USERNAME
+     echo "$USERNAME:$PASSWORD" | chpasswd
+     LINE=$((LINE+1))
+   done < $FILE
+ else
+   echo "File does not exist"
+ fi
